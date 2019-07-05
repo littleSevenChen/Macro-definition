@@ -59,5 +59,15 @@ UIAlertAction *sureAcion = [UIAlertAction actionWithTitle:@"确定" style:UIAler
 // 字体大小(常规/粗体)
 #define BOLDSYSTEMFONT(FONTSIZE)[UIFont boldSystemFontOfSize:FONTSIZE]
 #define SYSTEMFONT(FONTSIZE)    [UIFont systemFontOfSize:FONTSIZE]
-#define FONT(NAME, FONTSIZE)    [UIFont fontWithName:(NAME) size:(FONTSIZE)]
+#define FONT(NAME, FONTSIZE)    [UIFont fontWithName:(NAME) size:(FONT
+/* 根据TAG获取视图 */
+#define kViewWithTag(PARENTVIEW, TAG, CLASS) ((CLASS *)[PARENTVIEW viewWithTag:TAG])
+/* 加载NIB文件 */
+#define kLOADNIBWITHNAME(CLASS, OWNER) [[[NSBundle mainBundle] loadNibNamed:CLASS owner:OWNER options:nil] lastObject]
+/* 异步 */
+#define kGCDAsync(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), (dispatch_block_t)block)
+/* 同步 */
+#define kGCDMain(block) dispatch_async(dispatch_get_main_queue(),(dispatch_block_t)block)
+/* 获取当前语言环境 */
+#define kCurrentLanguage [[NSLocale preferredLanguages] objectAtIndex:0]
 #endif /* Common_h */
